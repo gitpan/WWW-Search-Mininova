@@ -9,7 +9,7 @@ use HTML::Entities;
 use URI;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 my $DEBUG = 0;
 
 sub new {
@@ -48,7 +48,7 @@ sub make_uri {
         $self->_make_category_segment,
         $self->_make_sort_segment,
     );
-    print "Search URI: $uri\n"
+    print STDERR "Search URI: $uri\n"
         if $DEBUG;
     return $uri;
 }
@@ -130,15 +130,25 @@ sub _parse_search {
             $nav{get_did_you_mean} = 2;
         }
         elsif ( $nav{get_did_you_mean} == 2
-            and $t->is_start_tag('a')
+            and $t->is_start_tag('strong')
         ) {
             $nav{get_did_you_mean} = 3;
         }
         elsif ( $nav{get_did_you_mean} == 3
+            and $t->is_start_tag('a')
+        ) {
+            $nav{get_did_you_mean} = 4;
+        }
+        elsif ( $nav{get_did_you_mean} == 4
             and $t->is_text
         ) {
             $nav{get_did_you_mean} = 0;
             $did_you_mean = decode_entities( $t->as_is );
+        }
+        elsif ( $nav{get_did_you_mean}
+            and $t->is_end_tag('p')
+        ) {
+            $nav{get_did_you_mean} = 0;
         }
         elsif ( $t->is_start_tag('table')
             and $t->get_attr('class')
@@ -169,7 +179,7 @@ sub _parse_search {
                 $current_result{category} = $category;
                 $nav{get_name} = 1;
             }
-            print "Added date: $current_result{added_date}\n"
+            print STDERR "Added date: $current_result{added_date}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_category} == 1
@@ -183,7 +193,7 @@ sub _parse_search {
             $current_result{category} = $t->as_is;
             $current_result{category} =~ s/&nbsp;/ /g;
             @nav{ qw(get_category  get_name) } = (0, 1);
-            print "Category: $current_result{category}\n"
+            print STDERR "Category: $current_result{category}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_name}
@@ -233,7 +243,7 @@ sub _parse_search {
         ) {
             $current_result{subcategory} = $t->as_is;
             $current_result{subcategory} =~ s/&nbsp;/ /g;
-            print "Subcategory: $current_result{subcategory}\n"
+            print STDERR "Subcategory: $current_result{subcategory}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_subcategory} == 2
@@ -243,7 +253,7 @@ sub _parse_search {
             $current_result{name} =~ s/^\s+|\s+$//g;
             $current_result{name} =~ s/&nbsp;/ /g;
             $current_result{is_private} ||= 0;
-            print "Name: $current_result{name}\n"
+            print STDERR "Name: $current_result{name}\n"
                     . "Is private: $current_result{is_private}\n"
                 if $DEBUG;
         }
@@ -253,7 +263,7 @@ sub _parse_search {
             $current_result{size} = $t->as_is;
             $current_result{size} =~ s/&nbsp;/ /g;
             @nav{ qw(get_size get_seeds) } = (0, 1);
-            print "Size: $current_result{size}\n"
+            print STDERR "Size: $current_result{size}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_seeds} == 1
@@ -276,7 +286,7 @@ sub _parse_search {
             $current_result{seeds} = $t->as_is;
             $current_result{seeds} =~ s/\D//g;
             @nav{ qw(get_seeds  get_leechers)  } = (0, 1);
-            print "Seeds: $current_result{seeds}\n"
+            print STDERR "Seeds: $current_result{seeds}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_seeds} == 2
@@ -312,7 +322,7 @@ sub _parse_search {
         }
         elsif ( $nav{end_result} == 1 ) {
             $nav{end_result} = 0;
-            print "Leechers: $current_result{leechers}\n"
+            print STDERR "Leechers: $current_result{leechers}\n"
                 if $DEBUG;
             decode_entities(
                 @current_result{ qw(
@@ -621,9 +631,9 @@ want to read the docs of it for more details.
 
     { debug => 1 }
 
-When set to a true value causes some debug messages to appear,
-whether they are useful is another story :). Defaults to C<0> for
-obvious reasons.
+When set to a true value causes some debug messages to appear on
+STDERR, whether they are useful or not is another story :).
+Defaults to C<0> for obvious reasons.
 
 =head2 search
 
@@ -816,7 +826,7 @@ want to read the docs of it for more details.
 
 When called without an argument returns the current setting. An
 argument can be either a true or false value. When argument is
-true, causes debugging messages to be printed.
+true, causes debugging messages to be printed to STDERR.
 
 =head1 RESULTS
 
