@@ -1,5 +1,9 @@
 Revision history for Perl extension WWW::Search::Mininova.
 
+0.03  Sat Jan 12 2:18:00 2008
+	- uploaded POE::Component::WWW::Search::Mininova wrapper.
+		this is just a documentation update about new flavor.
+
 0.02  Sat Jan 12 12:32:00 2008
 	- fixed the bug which would return 'isoHunt' in "Did you mean?"
 		when no results were found.

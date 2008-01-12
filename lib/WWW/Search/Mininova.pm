@@ -9,7 +9,7 @@ use HTML::Entities;
 use URI;
 use Carp;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 my $DEBUG = 0;
 
 sub new {
@@ -529,6 +529,7 @@ WWW::Search::Mininova - Interface to www.mininova.org Torrent site
 
 Module provides interface to Mininova.org website. Facilitates
 search and torrent URI grabber as well as statistics information.
+Now available in L<POE> flavor. See L<POE::Component::WWW::Search::Mininova>
 
 =head1 METHODS
 
