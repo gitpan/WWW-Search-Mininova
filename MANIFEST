@@ -4,3 +4,4 @@ MANIFEST
 README
 t/WWW-Search-Mininova.t
 lib/WWW/Search/Mininova.pm
+META.yml                                 Module meta-data (added by MakeMaker)

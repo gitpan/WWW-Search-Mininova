@@ -9,7 +9,7 @@ use HTML::Entities;
 use URI;
 use Carp;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 my $DEBUG = 0;
 
 sub new {
@@ -48,7 +48,7 @@ sub make_uri {
         $self->_make_category_segment,
         $self->_make_sort_segment,
     );
-    print STDERR "Search URI: $uri\n"
+    warn "Search URI: $uri\n"
         if $DEBUG;
     return $uri;
 }
@@ -179,7 +179,7 @@ sub _parse_search {
                 $current_result{category} = $category;
                 $nav{get_name} = 1;
             }
-            print STDERR "Added date: $current_result{added_date}\n"
+            warn "Added date: $current_result{added_date}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_category} == 1
@@ -193,7 +193,7 @@ sub _parse_search {
             $current_result{category} = $t->as_is;
             $current_result{category} =~ s/&nbsp;/ /g;
             @nav{ qw(get_category  get_name) } = (0, 1);
-            print STDERR "Category: $current_result{category}\n"
+            warn "Category: $current_result{category}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_name}
@@ -243,7 +243,7 @@ sub _parse_search {
         ) {
             $current_result{subcategory} = $t->as_is;
             $current_result{subcategory} =~ s/&nbsp;/ /g;
-            print STDERR "Subcategory: $current_result{subcategory}\n"
+            warn "Subcategory: $current_result{subcategory}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_subcategory} == 2
@@ -253,7 +253,7 @@ sub _parse_search {
             $current_result{name} =~ s/^\s+|\s+$//g;
             $current_result{name} =~ s/&nbsp;/ /g;
             $current_result{is_private} ||= 0;
-            print STDERR "Name: $current_result{name}\n"
+            warn "Name: $current_result{name}\n"
                     . "Is private: $current_result{is_private}\n"
                 if $DEBUG;
         }
@@ -263,7 +263,7 @@ sub _parse_search {
             $current_result{size} = $t->as_is;
             $current_result{size} =~ s/&nbsp;/ /g;
             @nav{ qw(get_size get_seeds) } = (0, 1);
-            print STDERR "Size: $current_result{size}\n"
+            warn "Size: $current_result{size}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_seeds} == 1
@@ -286,7 +286,7 @@ sub _parse_search {
             $current_result{seeds} = $t->as_is;
             $current_result{seeds} =~ s/\D//g;
             @nav{ qw(get_seeds  get_leechers)  } = (0, 1);
-            print STDERR "Seeds: $current_result{seeds}\n"
+            warn "Seeds: $current_result{seeds}\n"
                 if $DEBUG;
         }
         elsif ( $nav{get_seeds} == 2
@@ -322,7 +322,7 @@ sub _parse_search {
         }
         elsif ( $nav{end_result} == 1 ) {
             $nav{end_result} = 0;
-            print STDERR "Leechers: $current_result{leechers}\n"
+            warn "Leechers: $current_result{leechers}\n"
                 if $DEBUG;
             decode_entities(
                 @current_result{ qw(

@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::Search::Mininova.
 
+0.04  Sat Jan 12 2:18:00 2008
+	- minor coding style adjustments.
+
 0.03  Sat Jan 12 2:18:00 2008
 	- uploaded POE::Component::WWW::Search::Mininova wrapper.
 		this is just a documentation update about new flavor.
