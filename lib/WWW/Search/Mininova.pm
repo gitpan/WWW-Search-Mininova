@@ -9,7 +9,7 @@ use HTML::Entities;
 use URI;
 use Carp;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 my $DEBUG = 0;
 
 sub new {
@@ -916,15 +916,49 @@ L<URI>, L<LWP::UserAgent>
 
 =head1 AUTHOR
 
-Zoffix Znet, E<lt>cpan@zoffix.comE<gt>
+Zoffix Znet, C<< <zoffix at cpan.org> >>
+(L<http://zoffix.com>, L<http://haslayout.net>)
 
-=head1 COPYRIGHT AND LICENSE
+=head1 BUGS
 
-Copyright (C) 2008 by Zoffix Znet
+Please report any bugs or feature requests to C<bug-www-search-mininova at rt.cpan.org>, or through
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Search-Mininova>.  I will be notified, and then you'll
+automatically be notified of progress on your bug as I make changes.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.8 or,
-at your option, any later version of Perl 5 you may have available.
+=head1 SUPPORT
 
+You can find documentation for this module with the perldoc command.
+
+    perldoc WWW::Search::Mininova
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Search-Mininova>
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/WWW-Search-Mininova>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/WWW-Search-Mininova>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/WWW-Search-Mininova>
+
+=back
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008 Zoffix Znet, all rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
 
 =cut
+

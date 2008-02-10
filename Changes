@@ -1,19 +1,23 @@
-Revision history for Perl extension WWW::Search::Mininova.
+Revision history for WWW-Search-Mininova
+
+0.05  Sun Feb 10 9:54:00 2008
+    - fixed some distro issues,
+        added examples/mini.pl and
+        more tests.
 
 0.04  Sat Jan 12 2:18:00 2008
-	- minor coding style adjustments.
+    - minor coding style adjustments.
 
 0.03  Sat Jan 12 2:18:00 2008
-	- uploaded POE::Component::WWW::Search::Mininova wrapper.
-		this is just a documentation update about new flavor.
+    - uploaded POE::Component::WWW::Search::Mininova wrapper.
+        this is just a documentation update about new flavor.
 
 0.02  Sat Jan 12 12:32:00 2008
-	- fixed the bug which would return 'isoHunt' in "Did you mean?"
-		when no results were found.
-	- changed the printing of optional debug messages to the STDERR
-		instead of STDOUT.
+    - fixed the bug which would return 'isoHunt' in "Did you mean?"
+        when no results were found.
+    - changed the printing of optional debug messages to the STDERR
+        instead of STDOUT.
 
 0.01  Wed Jan  9 20:23:42 2008
-	- original version; created by h2xs 1.23 with options
-		-X -n WWW::Search::Mininova -v 0.01
+        First version, released on an unsuspecting world.
 
