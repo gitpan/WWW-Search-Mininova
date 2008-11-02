@@ -2,22 +2,18 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
+          'PL_FILES' => {},
+          'INSTALLDIRS' => 'site',
           'NAME' => 'WWW::Search::Mininova',
+          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/WWW/Search/Mininova.pm',
           'PREREQ_PM' => {
-                           'Carp' => '1.04',
-                           'HTML::Entities' => '1.35',
-                           'HTML::TokeParser::Simple' => '3.15',
+                           'Test::More' => 0,
+                           'URI' => '1.35',
                            'LWP::UserAgent' => '2.036',
-                           'Pod::Coverage' => '0.18',
-                           'Test::Kwalitee' => '0',
-                           'Test::More' => '0',
-                           'Test::Pod' => '1.22',
-                           'Test::Pod::Coverage' => '1.08',
-                           'URI' => '1.35'
-                         },
-          'INSTALLDIRS' => 'site',
-          'EXE_FILES' => [],
-          'PL_FILES' => {}
+                           'HTML::TokeParser::Simple' => '3.15',
+                           'HTML::Entities' => '1.35',
+                           'Carp' => '1.04'
+                         }
         )
 ;

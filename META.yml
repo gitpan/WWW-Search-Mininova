@@ -1,6 +1,6 @@
 ---
 name: WWW-Search-Mininova
-version: 0.05
+version: 0.06
 author:
   - 'Zoffix Znet <zoffix@cpan.org>'
 abstract: Interface to www.mininova.org Torrent site
@@ -14,15 +14,11 @@ requires:
   LWP::UserAgent: 2.036
   URI: 1.35
 build_requires:
-  Pod::Coverage: 0.18
-  Test::Kwalitee: 0
   Test::More: 0
-  Test::Pod: 1.22
-  Test::Pod::Coverage: 1.08
 provides:
   WWW::Search::Mininova:
     file: lib/WWW/Search/Mininova.pm
-    version: 0.05
+    version: 0.06
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

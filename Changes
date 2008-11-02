@@ -1,5 +1,8 @@
 Revision history for WWW-Search-Mininova
 
+0.06  November 2, 2008
+        Fixed broken dependencies
+
 0.05  Sun Feb 10 9:54:00 2008
     - fixed some distro issues,
         added examples/mini.pl and

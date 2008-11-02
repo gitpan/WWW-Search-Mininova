@@ -9,10 +9,6 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/WWW/Search/Mininova.pm',
     build_requires => {
         'Test::More' => 0,
-        'Test::Kwalitee' => 0,
-        'Test::Pod'      => 1.22,
-        'Test::Pod::Coverage' => 1.08,
-        'Pod::Coverage'       => 0.18,
     },
     requires => {
         'LWP::UserAgent'           => 2.036,

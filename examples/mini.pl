@@ -1,9 +1,9 @@
-#!perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
 
-die "Usage: mini.pl <search_term>\n"
+die "Usage: $0 <search_term>\n"
     unless @ARGV;
 
 use lib '../lib';
